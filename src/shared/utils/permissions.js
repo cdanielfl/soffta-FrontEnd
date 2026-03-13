@@ -49,21 +49,11 @@ export const PERMISSIONS = {
     canManageUpas: false,
     canViewDashboard: false,
     canAccessRecepcao: true,
-    canAccessGuiche: false,
-    canAccessAdmin: false,
-    canAccessSuperAdmin: false
-  },
-  [ROLES.ATENDENTE]: {
-    label: 'Atendente',
-    canAccessAllUpas: false,
-    canManageUsers: false,
-    canManageUpas: false,
-    canViewDashboard: false,
-    canAccessRecepcao: false,
     canAccessGuiche: true,
     canAccessAdmin: false,
     canAccessSuperAdmin: false
-  }
+  },
+  
 };
 
 // UPAs disponíveis

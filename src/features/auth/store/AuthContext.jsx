@@ -95,20 +95,6 @@ export const AuthProvider = ({ children }) => {
           role: 'recepcionista',
           upa_id: upaName
         };
-      } else {
-        // Atendente por padrão
-        let upaName = email.split('@')[0].split('-').slice(1).join('-') || 'jangurussu';
-        // Normalizar nome da UPA
-        if (upaName.includes('edson')) upaName = 'edson-queiroz';
-        if (upaName.includes('queiroz')) upaName = 'edson-queiroz';
-        
-        mockUser = {
-          id: '5',
-          name: 'Atendente',
-          email: email,
-          role: 'atendente',
-          upa_id: upaName
-        };
       }
       
       localStorage.setItem('accessToken', 'mock-token-' + Date.now());
