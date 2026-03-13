@@ -1,0 +1,230 @@
+.reception-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.reception-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.reception-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.reception-header p {
+  color: var(--text-secondary);
+}
+
+.status-badge {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.reception-card {
+  padding: 2rem;
+}
+
+.reception-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.option-btn {
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 0.75rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.option-btn:hover {
+  border-color: var(--primary);
+}
+
+.option-btn.active {
+  border-color: var(--primary);
+  background: #eff6ff;
+  color: var(--primary);
+}
+
+.btn-large {
+  padding: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.preview-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--border);
+  padding-left: 3rem;
+  min-height: 400px;
+}
+
+.preview-content {
+  text-align: center;
+}
+
+.preview-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.preview-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.badge-padrão {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-prioritário {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-urgência {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.preview-label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.preview-time {
+  background: var(--bg-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  display: inline-block;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.preview-empty {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.preview-icon {
+  opacity: 0.2;
+  margin-bottom: 1rem;
+}
+
+.recentes-section {
+  margin-top: 2rem;
+}
+
+.recentes-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.recentes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.recente-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recente-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.recente-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recente-type {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.recente-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .reception-form {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-section {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 2rem;
+    min-height: 300px;
+  }
+
+  .recentes-grid {
+    grid-template-columns: 1fr;
+  }
+}
