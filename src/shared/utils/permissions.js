@@ -4,7 +4,7 @@ export const ROLES = {
   ADMIN_MASTER: 'admin_master',
   ADMIN_UPA: 'admin_upa',
   RECEPCIONISTA: 'recepcionista',
-  ATENDENTE: 'atendente'
+  
 };
 
 // Permissões por role
