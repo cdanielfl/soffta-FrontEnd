@@ -88,9 +88,9 @@ const Login = () => {
           </div>
 
           {/* MODO DESENVOLVIMENTO - Remover em produção */}
-          <div style={{ marginTop: '2rem', padding: '1rem', background: '#f8fafc', borderRadius: '0.5rem', fontSize: '0.75rem' }}>
-            <strong>Modo Desenvolvimento - Exemplos de login:</strong>
-            <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+          <div style={{ marginTop: '2rem', padding: '1rem', background: '#f1f5f9', border: '1px solid #cbd5e1', borderRadius: '0.5rem', fontSize: '0.75rem', color: '#0f172a' }}>
+            <strong style={{ color: '#0f172a' }}>Modo Desenvolvimento - Exemplos de login:</strong>
+            <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem', color: '#0f172a' }}>
               <li><strong>super@admin.com</strong> - Super Admin (acesso total)</li>
               <li><strong>diretora@instituto.com</strong> - Admin Master (todas UPAs)</li>
               <li><strong>admin-jangurussu@upa.com</strong> - Admin UPA Jangurussu</li>
@@ -98,7 +98,7 @@ const Login = () => {
               <li><strong>recepcao-jangurussu@upa.com</strong> - Recepcionista Jangurussu</li>
               <li><strong>atendente-itaperi@upa.com</strong> - Atendente Itaperi</li>
             </ul>
-            <p style={{ marginTop: '0.5rem', color: '#64748b' }}>Senha: qualquer uma</p>
+            <p style={{ marginTop: '0.5rem', color: '#475569' }}>Senha: qualquer uma</p>
           </div>
         </form>
       </div>

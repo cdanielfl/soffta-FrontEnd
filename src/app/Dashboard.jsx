@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../shared/context/ThemeContext';
 import { LogOut, User, LayoutDashboard, Users, Stethoscope, Monitor, BarChart3, Moon, Sun, Palette } from 'lucide-react';
 import { hasPermission } from '../shared/utils/permissions';
+import '../styles/Navbar.css';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {

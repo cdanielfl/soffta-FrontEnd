@@ -30,10 +30,10 @@ export const CustomizationProvider = ({ children }) => {
   const loadCustomization = () => {
     if (!user?.upa_id) {
       setConfig(defaultConfig);
+      clearCustomizationStyles();
       return;
     }
 
-    // Carregar configuração salva do localStorage
     const savedConfig = localStorage.getItem(`customization_${user.upa_id}`);
     if (savedConfig) {
       const parsed = JSON.parse(savedConfig);
@@ -41,16 +41,22 @@ export const CustomizationProvider = ({ children }) => {
       applyCustomization(parsed);
     } else {
       setConfig(defaultConfig);
-      applyCustomization(defaultConfig);
+      clearCustomizationStyles();
     }
   };
 
   const applyCustomization = (customConfig) => {
-    // Aplicar cores CSS
-    document.documentElement.style.setProperty('--primary', customConfig.primaryColor);
-    document.documentElement.style.setProperty('--primary-dark', adjustColor(customConfig.primaryColor, -20));
-    document.documentElement.style.setProperty('--secondary', customConfig.secondaryColor);
-    document.documentElement.style.setProperty('--success', customConfig.accentColor);
+    document.documentElement.style.setProperty('--custom-primary', customConfig.primaryColor);
+    document.documentElement.style.setProperty('--custom-primary-dark', adjustColor(customConfig.primaryColor, -20));
+    document.documentElement.style.setProperty('--custom-secondary', customConfig.secondaryColor);
+    document.documentElement.style.setProperty('--custom-success', customConfig.accentColor);
+  };
+
+  const clearCustomizationStyles = () => {
+    document.documentElement.style.removeProperty('--custom-primary');
+    document.documentElement.style.removeProperty('--custom-primary-dark');
+    document.documentElement.style.removeProperty('--custom-secondary');
+    document.documentElement.style.removeProperty('--custom-success');
   };
 
   const updateCustomization = (newConfig) => {
@@ -58,7 +64,6 @@ export const CustomizationProvider = ({ children }) => {
     setConfig(updatedConfig);
     applyCustomization(updatedConfig);
 
-    // Salvar no localStorage
     if (user?.upa_id) {
       localStorage.setItem(`customization_${user.upa_id}`, JSON.stringify(updatedConfig));
     }
@@ -66,7 +71,7 @@ export const CustomizationProvider = ({ children }) => {
 
   const resetCustomization = () => {
     setConfig(defaultConfig);
-    applyCustomization(defaultConfig);
+    clearCustomizationStyles();
     if (user?.upa_id) {
       localStorage.removeItem(`customization_${user.upa_id}`);
     }
