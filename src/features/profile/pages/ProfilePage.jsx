@@ -3,10 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { User, Mail, Shield, Building2, CheckCircle, XCircle, Edit, Key, ArrowLeft } from 'lucide-react';
 import { PERMISSIONS, getUpaBySlug } from '../../../shared/utils/permissions';
 import Navbar from '../../../shared/components/layout/Navbar';
+import { useFeedback } from '../../../shared/context/FeedbackContext';
 import '../../../styles/Profile.css';
 
 const Profile = () => {
   const { user } = useAuth();
+  const { showToast } = useFeedback();
+
+  const notifyWip = () => {
+    showToast({
+      title: 'Funcionalidade em desenvolvimento',
+      description: 'Em breve esse recurso estará disponível.',
+      type: 'info'
+    });
+  };
   const navigate = useNavigate();
 
   if (!user) return null;
@@ -102,11 +112,11 @@ const Profile = () => {
           <div className="card profile-section">
             <h2>Ações</h2>
             <div className="actions-section">
-              <button className="btn btn-primary" onClick={() => alert('Funcionalidade em desenvolvimento')}>
+              <button className="btn btn-primary" onClick={notifyWip}>
                 <Edit size={18} />
                 Editar Perfil
               </button>
-              <button className="btn btn-secondary" onClick={() => alert('Funcionalidade em desenvolvimento')}>
+              <button className="btn btn-secondary" onClick={notifyWip}>
                 <Key size={18} />
                 Alterar Senha
               </button>

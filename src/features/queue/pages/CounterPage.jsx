@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAccessibleUpas } from '../../../shared/utils/permissions';
 import api from '../../../shared/lib/api';
 import Navbar from '../../../shared/components/layout/Navbar';
+import { useFeedback } from '../../../shared/context/FeedbackContext';
 import '../../../styles/Counter.css';
 
 const Counter = () => {
@@ -15,6 +16,7 @@ const Counter = () => {
   const [queueCount, setQueueCount] = useState(0);
   const [guicheId] = useState(1);
   const [unidade, setUnidade] = useState('');
+  const { showToast } = useFeedback();
 
   useEffect(() => {
     // Definir unidade do usuário
@@ -55,7 +57,11 @@ const Counter = () => {
       setCurrent(response.data);
       updateQueue();
     } catch (error) {
-      alert('Nenhum paciente na fila');
+      showToast({
+        title: 'Nenhum paciente na fila',
+        description: 'Aguarde novos cadastros e tente novamente.',
+        type: 'warning'
+      });
     }
   };
 

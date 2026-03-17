@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAccessibleUpas, hasPermission } from '../../../shared/utils/permissions';
 import api from '../../../shared/lib/api';
 import Navbar from '../../../shared/components/layout/Navbar';
+import { useFeedback } from '../../../shared/context/FeedbackContext';
 import '../../../styles/Reception.css';
 
 const Reception = () => {
@@ -21,6 +22,7 @@ const Reception = () => {
   const [unidades, setUnidades] = useState([]);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const { showToast } = useFeedback();
 
   useEffect(() => {
     console.log('User:', user); // Debug
@@ -84,7 +86,11 @@ const Reception = () => {
       */
     } catch (error) {
       console.error('Erro ao criar atendimento:', error);
-      alert('Erro ao cadastrar paciente. Tente novamente.');
+      showToast({
+        title: 'Erro ao cadastrar paciente',
+        description: 'Tente novamente em instantes.',
+        type: 'error'
+      });
     } finally {
       setLoading(false);
     }

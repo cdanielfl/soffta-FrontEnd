@@ -4,6 +4,7 @@ import { useCustomization } from '../store/CustomizationContext';
 import { useAuth } from '../../../features/auth/store/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../../shared/components/layout/Navbar';
+import { useFeedback } from '../../../shared/context/FeedbackContext';
 import '../../../styles/Customization.css';
 
 const Customization = () => {
@@ -12,6 +13,7 @@ const Customization = () => {
   const navigate = useNavigate();
   const [tempConfig, setTempConfig] = useState(config);
   const [logoPreview, setLogoPreview] = useState(config.logo);
+  const { showToast, requestConfirmation } = useFeedback();
 
   const handleLogoUpload = (e) => {
     const file = e.target.files[0];
@@ -31,20 +33,37 @@ const Customization = () => {
 
   const handleSave = () => {
     updateCustomization(tempConfig);
-    alert('Personalização salva com sucesso!');
+    showToast({
+      title: 'Personalização salva',
+      description: 'As alterações foram aplicadas.',
+      type: 'success'
+    });
   };
 
-  const handleReset = () => {
-    if (confirm('Deseja restaurar as configurações padrão?')) {
-      resetCustomization();
-      setTempConfig({
-        logo: null,
-        primaryColor: '#6366f1',
-        secondaryColor: '#8b5cf6',
-        accentColor: '#10b981'
-      });
-      setLogoPreview(null);
-    }
+  const handleReset = async () => {
+    const confirmed = await requestConfirmation({
+      title: 'Restaurar configurações',
+      description: 'Deseja voltar para os valores padrão de personalização?',
+      confirmLabel: 'Restaurar',
+      cancelLabel: 'Cancelar'
+    });
+
+    if (!confirmed) return;
+
+    resetCustomization();
+    setTempConfig({
+      logo: null,
+      primaryColor: '#6366f1',
+      secondaryColor: '#8b5cf6',
+      accentColor: '#10b981'
+    });
+    setLogoPreview(null);
+
+    showToast({
+      title: 'Configurações restauradas',
+      description: 'Os valores padrão foram aplicados.',
+      type: 'info'
+    });
   };
 
   return (
