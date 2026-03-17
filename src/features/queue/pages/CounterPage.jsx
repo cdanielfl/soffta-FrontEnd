@@ -14,42 +14,63 @@ const Counter = () => {
   const [current, setCurrent] = useState(null);
   const [queueCount, setQueueCount] = useState(0);
   const [guicheId] = useState(1);
-  const [unidade, setUnidade] = useState('');
+  const [selectedUpa, setSelectedUpa] = useState(null);
+  const unidadeNome = selectedUpa?.name || '';
+  const unidadeDisplay = selectedUpa ? unidadeNome : 'Carregando...';
+  const subtitleText = selectedUpa ? `${unidadeNome} - Atendimento` : 'Atendimento';
 
   useEffect(() => {
     // Definir unidade do usuário
     const accessibleUpas = getAccessibleUpas(user);
-    if (user?.upa_id && accessibleUpas.length > 0) {
-      const userUpa = accessibleUpas.find(upa => upa.id === user.upa_id);
-      if (userUpa) {
-        setUnidade(userUpa.name);
-      }
-    } else if (accessibleUpas.length > 0) {
-      setUnidade(accessibleUpas[0].name);
+    if (accessibleUpas.length === 0) {
+      setSelectedUpa(null);
+      return;
     }
-  }, [user]);
 
-  useEffect(() => {
-    if (unidade) {
-      updateQueue();
-      const interval = setInterval(updateQueue, 5000);
-      return () => clearInterval(interval);
+    if (user?.upa_id) {
+      const userUpa = accessibleUpas.find(
+        upa => upa.id === user.upa_id || upa.slug === user.upa_id
+      );
+      if (userUpa) {
+        setSelectedUpa(userUpa);
+        return;
+      }
     }
-  }, [unidade]);
+
+    setSelectedUpa(accessibleUpas[0]);
+  }, [user]);
 
   const updateQueue = async () => {
     try {
-      const response = await api.get(`/atendimentos/${unidade}`);
+      if (!selectedUpa) return;
+
+      const upaSlug = selectedUpa.slug || selectedUpa.id;
+      if (!upaSlug) return;
+
+      const response = await api.get(`/atendimentos/${upaSlug}`);
       setQueueCount(response.data.length);
     } catch (error) {
       console.error('Erro ao atualizar fila:', error);
     }
   };
 
+  useEffect(() => {
+    if (selectedUpa) {
+      updateQueue();
+      const interval = setInterval(updateQueue, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [selectedUpa]);
+
   const chamarProxima = async () => {
+    if (!selectedUpa) return;
+
+    const upaSlug = selectedUpa.slug || selectedUpa.id;
+    if (!upaSlug) return;
+
     try {
       const response = await api.post('/atendimentos/chamar', {
-        unidade,
+        unidade: upaSlug,
         guiche: guicheId
       });
       setCurrent(response.data);
@@ -80,7 +101,7 @@ const Counter = () => {
 
   return (
     <>
-      <Navbar title={`Guichê ${guicheId}`} subtitle={`${unidade} - Atendimento`} />
+      <Navbar title={`Guichê ${guicheId}`} subtitle={subtitleText} />
       <div className="counter-container">
       <button onClick={() => navigate('/painel-controle')} className="back-button">
         <ArrowLeft size={20} />
@@ -91,7 +112,7 @@ const Counter = () => {
           <div className="counter-badge">{guicheId}</div>
           <div>
             <h1>Guichê {guicheId}</h1>
-            <p>{unidade}</p>
+            <p>{unidadeDisplay}</p>
           </div>
         </div>
         <div className="status-online">
@@ -165,7 +186,7 @@ const Counter = () => {
             <div className="info-list">
               <div className="info-row">
                 <span className="info-label">Unidade</span>
-                <span className="info-value">{unidade}</span>
+                <span className="info-value">{unidadeDisplay}</span>
               </div>
               <div className="info-row">
                 <span className="info-label">Guichê</span>
