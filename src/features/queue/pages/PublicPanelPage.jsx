@@ -4,17 +4,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { useTheme } from '../../../shared/context/ThemeContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getUpaBySlug } from '../../../shared/constants/upas';
 import '../../../styles/PublicPanel.css';
 
 const PublicPanel = () => {
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
+  const { upaSlug } = useParams();
+
+  // Try to resolve the UPA by slug, fallback if none
+  const resolvedUpa = getUpaBySlug(upaSlug);
+  const unidade = resolvedUpa ? resolvedUpa.name : 'Painel de Atendimento';
+
   const [historico, setHistorico] = useState([]);
   const [lastChamada, setLastChamada] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const unidade = 'UPA Centro';
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,9 +36,9 @@ const PublicPanel = () => {
       id: Date.now(),
       nome_paciente: 'João Silva',
       tipo_atendimento: 'Padrão',
-      guiche: 1,
+      guiche: Math.floor(Math.random() * 5) + 1, // Random guiche for realism
       hora_chamada: new Date().toISOString(),
-      unidade: 'UPA Centro'
+      unidade: unidade
     };
 
     setLastChamada(novaChamada);

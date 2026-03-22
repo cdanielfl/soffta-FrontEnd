@@ -19,6 +19,7 @@ export const AppRoutes = () => {
       <Route path="/entrar" element={<Login />} />
       <Route path="/cadastro" element={<Register />} />
       <Route path="/painel" element={<PublicPanelPage />} />
+      <Route path="/painel/:upaSlug" element={<PublicPanelPage />} />
 
       {/* Rotas Protegidas */}
       <Route path="/painel-controle" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
