@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+﻿import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../features/auth/store/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { LogOut, User, Home, Moon, Sun } from 'lucide-react';
@@ -46,3 +46,4 @@ const Navbar = ({ title, subtitle }) => {
 };
 
 export default Navbar;
+

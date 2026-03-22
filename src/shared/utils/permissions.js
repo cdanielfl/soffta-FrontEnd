@@ -23,7 +23,7 @@ export const PERMISSIONS = {
   [ROLES.ADMIN_MASTER]: {
     label: 'Administrador Master',
     canAccessAllUpas: true,
-    canManageUsers: false,
+    canManageUsers: true,
     canManageUpas: false,
     canViewDashboard: true,
     canAccessRecepcao: false,
@@ -34,7 +34,7 @@ export const PERMISSIONS = {
   [ROLES.ADMIN_UPA]: {
     label: 'Administrador UPA',
     canAccessAllUpas: false,
-    canManageUsers: false,
+    canManageUsers: true,
     canManageUpas: false,
     canViewDashboard: true,
     canAccessRecepcao: true,
@@ -111,3 +111,4 @@ export const getAccessibleUpas = (user) => {
   // Retorna apenas a UPA do usuário
   return Object.values(UPAS).filter(upa => upa.id === user.upa_id);
 };
+

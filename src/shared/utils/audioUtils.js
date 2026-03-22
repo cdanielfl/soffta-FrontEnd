@@ -59,3 +59,4 @@ export const announcePatient = (nomePaciente, guiche) => {
     }
   }, 2000);
 };
+

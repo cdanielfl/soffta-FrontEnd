@@ -1,4 +1,4 @@
-.profile-container {
+﻿.profile-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
@@ -146,3 +146,4 @@
     flex-direction: column;
   }
 }
+

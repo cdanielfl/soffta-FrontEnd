@@ -1,4 +1,4 @@
-.dashboard-container {
+﻿.dashboard-container {
   min-height: 100vh;
   background: var(--bg-secondary);
 }
@@ -175,3 +175,4 @@
   color: var(--text-secondary);
   font-size: 0.875rem;
 }
+

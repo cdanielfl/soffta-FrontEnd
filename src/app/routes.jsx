@@ -7,6 +7,7 @@ import ReceptionPage from '../features/queue/pages/ReceptionPage'
 import CounterPage from '../features/queue/pages/CounterPage'
 import PublicPanelPage from '../features/queue/pages/PublicPanelPage'
 import AdminDashboardPage from '../features/admin/pages/AdminDashboardPage'
+import UsersManagementPage from '../features/admin/pages/UsersManagementPage'
 import ProfilePage from '../features/profile/pages/ProfilePage'
 import CustomizationPage from '../features/customization/pages/CustomizationPage'
 import NotFoundPage from '../app/NotFoundPage'
@@ -53,8 +54,18 @@ export const AppRoutes = () => {
         }
       />
 
+      <Route
+        path="/usuarios"
+        element={
+          <PrivateRoute requiredPermission="canManageUsers">
+            <UsersManagementPage />
+          </PrivateRoute>
+        }
+      />
+
       {/* 404 */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }
+

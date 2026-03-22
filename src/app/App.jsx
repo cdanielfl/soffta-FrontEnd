@@ -1,4 +1,4 @@
-import { AppRoutes } from './routes'
+﻿import { AppRoutes } from './routes'
 import '../styles/App.css'
 
 function App() {
@@ -10,3 +10,4 @@ function App() {
 }
 
 export default App
+

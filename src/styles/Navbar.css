@@ -1,4 +1,4 @@
-.navbar {
+﻿.navbar {
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
   position: sticky;
@@ -93,3 +93,4 @@
     display: none;
   }
 }
+

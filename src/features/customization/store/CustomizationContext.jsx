@@ -102,3 +102,4 @@ export const CustomizationProvider = ({ children }) => {
 };
 
 export default CustomizationContext;
+

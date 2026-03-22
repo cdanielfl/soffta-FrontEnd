@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 
 /**
  * Hook para gerenciar estado no localStorage
@@ -59,3 +59,4 @@ export const useDebounce = (value, delay) => {
 
   return debouncedValue;
 };
+

@@ -1,4 +1,4 @@
-import { useQueueStore } from '../store/queueStore';
+﻿import { useQueueStore } from '../store/queueStore';
 import PatientCard from './PatientCard';
 
 const QueueList = () => {

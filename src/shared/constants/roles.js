@@ -24,7 +24,7 @@ export const PERMISSIONS = {
   [ROLES.ADMIN_MASTER]: {
     label: 'Administrador Master',
     canAccessAllUpas: true,
-    canManageUsers: false,
+    canManageUsers: true,
     canManageUpas: false,
     canViewDashboard: true,
     canAccessRecepcao: false,
@@ -36,7 +36,7 @@ export const PERMISSIONS = {
   [ROLES.ADMIN_UPA]: {
     label: 'Administrador UPA',
     canAccessAllUpas: false,
-    canManageUsers: false,
+    canManageUsers: true,
     canManageUpas: false,
     canViewDashboard: true,
     canAccessRecepcao: true,
@@ -70,3 +70,4 @@ export const PERMISSIONS = {
     canCustomize: false
   }
 };
+

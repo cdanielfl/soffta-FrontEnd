@@ -1,4 +1,4 @@
-const LoadingSpinner = ({ size = 'md' }) => {
+﻿const LoadingSpinner = ({ size = 'md' }) => {
   const sizes = {
     sm: '20px',
     md: '40px',
@@ -19,3 +19,4 @@ const LoadingSpinner = ({ size = 'md' }) => {
 };
 
 export default LoadingSpinner;
+

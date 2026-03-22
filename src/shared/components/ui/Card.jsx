@@ -1,4 +1,4 @@
-import { cn } from '../../lib/utils';
+﻿import { cn } from '../../lib/utils';
 
 export const Card = ({ children, className, ...props }) => {
   return (
@@ -68,3 +68,4 @@ export const CardFooter = ({ children, className, ...props }) => {
     </div>
   );
 };
+

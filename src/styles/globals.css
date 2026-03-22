@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -216,3 +216,4 @@ a {
   display: inline-flex;
   align-items: center;
 }
+

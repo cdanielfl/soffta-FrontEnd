@@ -26,3 +26,4 @@ export const getUpaBySlug = (slug) => {
     upa.id === slug || upa.slug === slug
   );
 };
+

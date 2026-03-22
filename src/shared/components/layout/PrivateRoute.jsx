@@ -35,3 +35,4 @@ const PrivateRoute = ({ children, requireAdmin = false, requiredPermission = nul
 };
 
 export default PrivateRoute;
+

@@ -1,4 +1,4 @@
-.app {
+﻿.app {
   min-height: 100vh;
 }
 
@@ -84,3 +84,4 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+

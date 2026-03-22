@@ -1,4 +1,4 @@
-import api from '../../../shared/lib/api';
+﻿import api from '../../../shared/lib/api';
 
 const authService = {
   async login(email, password) {
@@ -51,3 +51,4 @@ const authService = {
 };
 
 export default authService;
+

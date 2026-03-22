@@ -1,4 +1,4 @@
-import api from '../../shared/lib/api';
+﻿import api from '../../../shared/lib/api';
 
 export const adminService = {
   async getStats(upaId) {
@@ -16,3 +16,4 @@ export const adminService = {
     return response.data;
   }
 };
+

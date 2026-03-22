@@ -1,4 +1,4 @@
-.customization-container {
+﻿.customization-container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
@@ -162,3 +162,4 @@
     flex-direction: column;
   }
 }
+

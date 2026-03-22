@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+﻿import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import ToastStack from '../components/ui/ToastStack';
 import ConfirmationModal from '../components/ui/ConfirmationModal';
 
@@ -79,3 +79,4 @@ export const FeedbackProvider = ({ children }) => {
     </FeedbackContext.Provider>
   );
 };
+

@@ -1,4 +1,4 @@
-import { Card } from '../../../shared/components/ui/Card';
+﻿import { Card } from '../../../shared/components/ui/Card';
 
 const StatsCard = ({ title, value, icon: Icon, trend }) => {
   return (

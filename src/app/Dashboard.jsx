@@ -1,7 +1,7 @@
-import { useAuth } from '../features/auth/store/AuthContext';
+﻿import { useAuth } from '../features/auth/store/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../shared/context/ThemeContext';
-import { LogOut, User, LayoutDashboard, Users, Stethoscope, Monitor, BarChart3, Moon, Sun, Palette } from 'lucide-react';
+import { LogOut, User, LayoutDashboard, Users, Stethoscope, Monitor, BarChart3, Moon, Sun, Palette, UserCog } from 'lucide-react';
 import { hasPermission } from '../shared/utils/permissions';
 import '../styles/Navbar.css';
 import '../styles/Dashboard.css';
@@ -59,11 +59,19 @@ const Dashboard = () => {
     },
     {
       title: 'Personalização',
-      description: 'Logo e cores da UPA',
+      description: 'Adicione logo e altere as cores do seu painel',
       icon: Palette,
       path: '/personalizacao',
       color: '#ec4899',
       permission: 'canAccessAdmin'
+    },
+    {
+      title: 'Usuários',
+      description: 'Gerenciar acessos e perfis',
+      icon: UserCog,
+      path: '/usuarios',
+      color: '#0ea5e9',
+      permission: 'canManageUsers'
     }
   ];
 
